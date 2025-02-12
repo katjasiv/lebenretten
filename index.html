@@ -27,41 +27,18 @@
         .info {
             margin: 20px 0;
         }
-        .form-group {
-            margin: 15px 0;
-            text-align: left;
-        }
-        input, button {
+        button {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
             border-radius: 5px;
             border: 1px solid #ccc;
-        }
-        button {
             background-color: #28a745;
             color: white;
             border: none;
             cursor: pointer;
         }
-        .success-message {
-            display: none;
-            color: green;
-            margin-top: 15px;
-        }
     </style>
-    <script>
-        function submitForm(event) {
-            event.preventDefault();
-            document.getElementById('success-message').style.display = 'block';
-            document.getElementById('registration-form').reset();
-
-            const name = document.getElementById('name').value;
-            const teilnahme = document.querySelector('input[name="teilnahme"]:checked').value;
-            const mailtoLink = `mailto:katjasivkova2006@gmail.com?subject=Anmeldung%20zur%20Spendenaktion&body=Name:%20${name}%0AAntwort:%20${teilnahme}`;
-            window.location.href = mailtoLink;
-        }
-    </script>
 </head>
 <body>
     <div class="container">
@@ -72,21 +49,16 @@
             <p><strong>Ort:</strong> Berufskolleg Siegburg - Aula</p>
         </div>
         
-        <form id="registration-form" onsubmit="submitForm(event)">
-            <div class="form-group">
-                <label for="name">Dein Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label>Möchtest du teilnehmen?</label><br>
-                <input type="radio" id="ja" name="teilnahme" value="Ja, ich werde da sein!" required>
-                <label for="ja">Ja, ich werde da sein!</label><br>
-                <input type="radio" id="nein" name="teilnahme" value="Nein, ich komme nicht.">
-                <label for="nein">Nein, ich komme nicht.</label>
-            </div>
+        <form action="https://formspree.io/f/xpwqjjnz" method="POST">
+            <input type="text" name="name" placeholder="Dein Name" required>
+            <label>
+                <input type="radio" name="teilnahme" value="Ja, ich werde da sein!" required> Ja, ich werde da sein!
+            </label><br>
+            <label>
+                <input type="radio" name="teilnahme" value="Nein, ich komme nicht."> Nein, ich komme nicht.
+            </label><br>
             <button type="submit">Anmeldung absenden</button>
         </form>
-        <p id="success-message" class="success-message">Vielen Dank für deine Anmeldung!</p>
     </div>
 </body>
 </html>
