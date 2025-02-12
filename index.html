@@ -38,6 +38,11 @@
             border: none;
             cursor: pointer;
         }
+        .success-message {
+            display: none;
+            color: green;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -51,6 +56,7 @@
         
         <form action="https://formspree.io/f/xpwqjjnz" method="POST">
             <input type="text" name="name" placeholder="Dein Name" required>
+            <input type="email" name="_replyto" placeholder="Deine E-Mail (optional)">
             <label>
                 <input type="radio" name="teilnahme" value="Ja, ich werde da sein!" required> Ja, ich werde da sein!
             </label><br>
@@ -59,6 +65,12 @@
             </label><br>
             <button type="submit">Anmeldung absenden</button>
         </form>
+        <p id="success-message" class="success-message">Vielen Dank für deine Anmeldung!</p>
+        <script>
+            document.querySelector("form").onsubmit = function() {
+                document.getElementById("success-message").style.display = "block";
+            };
+        </script>
     </div>
 </body>
 </html>
