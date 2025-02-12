@@ -43,6 +43,10 @@
             color: green;
             margin-top: 15px;
         }
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -55,14 +59,17 @@
         </div>
         
         <form action="https://formspree.io/f/xpwqjjnz" method="POST">
-            <input type="text" name="name" placeholder="Dein Name" required>
-            <input type="email" name="_replyto" placeholder="Deine E-Mail (optional)">
-            <label>
-                <input type="radio" name="teilnahme" value="Ja, ich werde da sein!" required> Ja, ich werde da sein!
-            </label><br>
-            <label>
-                <input type="radio" name="teilnahme" value="Nein, ich komme nicht."> Nein, ich komme nicht.
-            </label><br>
+            <div class="form-group">
+                <label for="name">Dein Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Möchtest du teilnehmen?</label><br>
+                <input type="radio" id="ja" name="teilnahme" value="Ja, ich werde da sein!" required>
+                <label for="ja">Ja, ich werde da sein!</label><br>
+                <input type="radio" id="nein" name="teilnahme" value="Nein, ich komme nicht.">
+                <label for="nein">Nein, ich komme nicht.</label>
+            </div>
             <button type="submit">Anmeldung absenden</button>
         </form>
         <p id="success-message" class="success-message">Vielen Dank für deine Anmeldung!</p>
